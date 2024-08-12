@@ -9,7 +9,7 @@ jobs:
       - setup_remote_docker
       - run:
           name: Update CA certificates
-          command: apt-get update && apt-get install -y ca-certificates
+          command: apk add --no-cache ca-certificates
       - run:
           name: Install dependencies
           command: |
