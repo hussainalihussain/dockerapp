@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /dockerapp
+    working_directory: /dockerapp.v0.6-published
     docker:
       - image: docker:17.05.0-ce-git
     steps:
@@ -20,7 +20,7 @@ jobs:
           name: Run tests
           command: |
             docker-compose up -d
-            docker-compose run dockerapp python test.py
+            docker-compose run dockerapp.v0.6-published python test.py
       - deploy:
           name: Push application Docker image
           command: |
