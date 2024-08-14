@@ -24,6 +24,8 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
+# Note that: -e email is not working right now, as I checked it through terminal/cmd
+#            docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
             docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
             docker tag dockerappv06-published-dockerapp $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
             docker tag dockerappv06-published-dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
