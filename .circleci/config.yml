@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: /dockerapp.v0.6-published
+    working_directory: /dockerapp
     docker:
       - image: docker:17.05.0-ce-git
     steps:
@@ -25,7 +25,7 @@ jobs:
           name: Push application Docker image
           command: |
             docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
-            docker tag dockerappv06-published-dockerapp $DOCKER_HUB_USER_ID/dockerappv06-published-dockerapp:$CIRCLE_SHA1
-            docker tag dockerappv06-published-dockerapp $DOCKER_HUB_USER_ID/dockerappv06-published-dockerapp:latest
-            docker push $DOCKER_HUB_USER_ID/dockerappv06-published-dockerapp:$CIRCLE_SHA1
-            docker push $DOCKER_HUB_USER_ID/dockerappv06-published-dockerapp:latest
+            docker tag dockerapp $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
+            docker tag dockerapp $DOCKER_HUB_USER_ID/dockerapp:latest
+            docker push $DOCKER_HUB_USER_ID/dockerapp:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER_ID/dockerapp:latest
